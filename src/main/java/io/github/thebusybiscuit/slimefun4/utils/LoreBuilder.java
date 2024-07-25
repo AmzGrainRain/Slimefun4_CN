@@ -5,6 +5,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
@@ -15,11 +16,9 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 /**
  * This utility class provides a few handy methods and constants to build the lore of any
  * {@link SlimefunItemStack}. It is mostly used directly inside the class {@link SlimefunItems}.
- * 
- * @author TheBusyBiscuit
- * 
- * @see SlimefunItems
  *
+ * @author TheBusyBiscuit
+ * @see SlimefunItems
  */
 public final class LoreBuilder {
 
@@ -31,7 +30,8 @@ public final class LoreBuilder {
 
     private static final DecimalFormat hungerFormat = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.ROOT));
 
-    private LoreBuilder() {}
+    private LoreBuilder() {
+    }
 
     public static @Nonnull String radioactive(@Nonnull Radioactivity radioactivity) {
         return radioactivity.getLore();
@@ -41,40 +41,75 @@ public final class LoreBuilder {
         return tier + " " + type;
     }
 
+    public static @Nonnull String limit(int blocks) {
+        return "&8\u21E8 &7半径: " + blocks + "x" + blocks;
+    }
+
+    public static @Nonnull String limit(int width, int height) {
+        return "&8\u21E8 &7半径: " + width + "x" + height;
+    }
+
+    public static @Nonnull String percentage(@Nullable String title, float value) {
+        return "&8\u21E8 &7" + (title == null ? "百分比" : title) + ": " + value + "%";
+    }
+
+    public static @Nonnull String damagwe(int value) {
+        return "&8\u21E8 &7伤害: " + value;
+    }
+
+    public static @Nonnull String fuelEfficiency(float speed) {
+        return "&8\u21E8 &7燃料效率: &b" + speed + "x";
+    }
+
+    public static @Nonnull String speedPerTime(int speed) {
+        return "&8\u21E8 &7速度: &a" + speed + "/次";
+    }
+
     public static @Nonnull String speed(float speed) {
-        return "&8\u21E8 &b\u26A1 &7Speed: &b" + speed + 'x';
+        return "&8\u21E8 &b\u26A1 &7速度: &b" + speed + 'x';
     }
 
     public static @Nonnull String powerBuffer(int power) {
-        return power(power, " Buffer");
+        return power(power, " 容量");
+    }
+
+    public static @Nonnull String powerPerItem(int power) {
+        return power(power, "/物品");
+    }
+
+    public static @Nonnull String powerPerBlock(int power) {
+        return power(power, "/方块");
     }
 
     public static @Nonnull String powerPerSecond(int power) {
-        return power(power, "/s");
+        return power(power, "/秒");
     }
 
     public static @Nonnull String power(int power, @Nonnull String suffix) {
-        return "&8\u21E8 &e\u26A1 &7" + power + " J" + suffix;
+        return "&8\u21E8 &e\u26A1 &7" + power + " J" + suffix; // 汉化掉 J 会导致测试用例 io.github.thebusybiscuit.slimefun4.implementation.registration.TestRechargeableItems:66 无法通过
     }
 
     public static @Nonnull String powerCharged(int charge, int capacity) {
-        return "&8\u21E8 &e\u26A1 &7" + charge + " / " + capacity + " J";
+        return "&8\u21E8 &e\u26A1 &7" + charge + " / " + capacity + " J"; // 汉化掉 J 会导致测试用例 io.github.thebusybiscuit.slimefun4.implementation.registration.TestRechargeableItems:66 无法通过
     }
 
     public static @Nonnull String material(@Nonnull String material) {
-        return "&8\u21E8 &7Material: &b" + material;
+        return "&8\u21E8 &7材料: &b" + material;
     }
 
     public static @Nonnull String hunger(double value) {
-        return "&7&oRestores &b&o" + hungerFormat.format(value) + " &7&oHunger";
+        return "&7&oRestores &b&o" + hungerFormat.format(value) + " &7&o饥饿";
     }
 
     public static @Nonnull String range(int blocks) {
-        return "&7Range: &c" + blocks + " blocks";
+        return "&7范围: &c" + blocks + " 方块";
     }
 
     public static @Nonnull String usesLeft(int usesLeft) {
         return "&e" + usesLeft + ' ' + (usesLeft > 1 ? "Uses" : "Use") + " &7left";
     }
 
+    public static @Nonnull String coolingTime(int seconds) {
+        return "&8\u21E8 &7冷却时间: &b" + seconds + " 秒";
+    }
 }
