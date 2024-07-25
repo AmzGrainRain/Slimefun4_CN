@@ -4,6 +4,8 @@
 
 汉化内容来自项目 [SlimefunGuguProject/Slimefun4](https://github.com/SlimefunGuguProject/Slimefun4)
 
+[前往下载页](https://github.com/AmzGrainRain/Slimefun4_CN/releases/tag/v4.9)
+
 ## FAQ
 
 ### 为何基于已汉化过的项目再次进行汉化?
