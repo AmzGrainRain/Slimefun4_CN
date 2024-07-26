@@ -342,9 +342,9 @@
 
         <!-- Shaded packages -->
         <dependency>
-            <groupId>com.github.baked-libs.dough</groupId>
+            <groupId>com.github.starwishsama.dough</groupId>
             <artifactId>dough-api</artifactId>
-            <version>baf2d79f62</version>
+            <version>d783252831</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
