@@ -42,7 +42,7 @@ public final class FireworkUtils {
         Firework fw = (Firework) l.getWorld().spawnEntity(l, EntityType.FIREWORK);
         FireworkMeta meta = fw.getFireworkMeta();
 
-        meta.setDisplayName(ChatColor.GREEN + "Slimefun Research");
+        meta.setDisplayName(ChatColor.GREEN + "粘液科技研究");
         FireworkEffect effect = getRandomEffect(ThreadLocalRandom.current(), color);
         meta.addEffect(effect);
         meta.setPower(ThreadLocalRandom.current().nextInt(2) + 1);

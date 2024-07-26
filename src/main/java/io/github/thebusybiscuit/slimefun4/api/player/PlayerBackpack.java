@@ -234,7 +234,7 @@ public class PlayerBackpack {
 
     private void setContents(int size, HashMap<Integer, ItemStack> contents) {
         if (this.inventory == null) {
-            this.inventory = Bukkit.createInventory(null, size, "Backpack [" + size + " Slots]");
+            this.inventory = Bukkit.createInventory(null, size, "背包 [大小" + size + "]");
         }
 
         for (int i = 0; i < size; i++) {
